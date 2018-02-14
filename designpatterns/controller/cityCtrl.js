@@ -1,8 +1,8 @@
 import Model from "../model/city";
 
 export default class Controller {
-    constructor(model){
-        this.model=new Model();
+    constructor(){
+        this.model= Model;
     }
     
     add(name) {

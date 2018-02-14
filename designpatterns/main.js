@@ -61,7 +61,6 @@
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 	(function () {
-	    var model = new Model();
 	    var view = new _cityview2.default({ addBtn: document.querySelector('#addBtn'),
 	        removeBtn: document.querySelector('#removeBtn'),
 	        cityList: document.querySelector('#cityList')
@@ -91,10 +90,10 @@
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 	var Controller = function () {
-	    function Controller(model) {
+	    function Controller() {
 	        _classCallCheck(this, Controller);
 
-	        this.model = new _city2.default();
+	        this.model = _city2.default;
 	    }
 
 	    _createClass(Controller, [{
@@ -160,7 +159,7 @@
 	    return Model;
 	}();
 
-	exports.default = Model;
+	exports.default = new Model();
 
 /***/ }),
 /* 3 */
@@ -181,7 +180,7 @@
 	        _classCallCheck(this, Observer);
 
 	        //array for multiple views
-	        this.observers = {};
+	        this.observers = [];
 	    }
 
 	    _createClass(Observer, [{
@@ -232,7 +231,7 @@
 	        _classCallCheck(this, View);
 
 	        this.elements = elements;
-	        this.model = new _city2.default();
+	        this.model = _city2.default;
 	        this.controller = new _cityCtrl2.default();
 	    }
 

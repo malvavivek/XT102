@@ -4,7 +4,7 @@ import Controller from "../controller/cityCtrl";
 export default class View {
     constructor(elements){
         this.elements = elements;
-        this.model = new Model();
+        this.model = Model;
         this.controller = new Controller();
     }
     initialize(){

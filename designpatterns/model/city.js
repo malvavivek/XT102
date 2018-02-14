@@ -1,5 +1,5 @@
 import Observer from "../observer/listenernotify";
-export default class Model {
+class Model {
     constructor(cities){
         this.cities=[];
         this.cityAdded=new Observer();
@@ -16,3 +16,4 @@ export default class Model {
         this.cityRemoved.notify(this.cities);
     }
 }
+export default new Model();

@@ -1,7 +1,7 @@
 export default class Observer {
     constructor (observers) {
         //array for multiple views
-        this.observers = {};
+        this.observers = [];
     }
     attach(cb) {
         this.observers.push(cb);
