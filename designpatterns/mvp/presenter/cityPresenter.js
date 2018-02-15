@@ -6,7 +6,7 @@ export default class Presenter{
         this.view=View;
     }
 
-    initialize(){
+     initialize(){
         this.model.cityAdded.attach((cityList)=>{
             this.render(cityList)
         })

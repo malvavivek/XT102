@@ -50,12 +50,21 @@
 
 	var _cityPresenter2 = _interopRequireDefault(_cityPresenter);
 
+	var _multimodule = __webpack_require__(5);
+
+	var obj = _interopRequireWildcard(_multimodule);
+
+	function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
+
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 	(function () {
 	    var presenter = new _cityPresenter2.default();
 	    presenter.initialize();
+	    // console.log(obj.mod1()+ " "+obj.mod2()+ " "+obj.mod3());
+	    console.log(new obj.default() + " " + new obj.Mod2() + " " + new obj.Mod3() + " ");
 	})();
+	//import obj from './util/multimodule'
 
 /***/ }),
 /* 1 */
@@ -267,6 +276,59 @@
 	    removeBtn: document.querySelector('#removeBtn'),
 	    cityList: document.querySelector('#cityList')
 	});
+
+/***/ }),
+/* 5 */
+/***/ (function(module, exports) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	    value: true
+	});
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+	// function mod1(){
+	//     console.log("mod1");
+	// }
+	// function mod2(){
+	//     console.log("mod2");
+	// }
+	// function mod3(){
+	//     console.log("mod2");
+	// }
+
+
+	var Mod1 = function Mod1() {
+	    console.log('Mod1');
+	};
+
+	// export default class Mod1{
+	//     constructor(){
+	//         console.log('Mod1')
+	//     }
+	// }
+
+	var Mod2 = exports.Mod2 = function Mod2() {
+	    _classCallCheck(this, Mod2);
+
+	    console.log('Mod2');
+	};
+	// let  mod3=()=>{
+	//     console.log('Mod3');
+	// }
+
+
+	var Mod3 = exports.Mod3 = function Mod3() {
+	    _classCallCheck(this, Mod3);
+
+	    console.log('Mod3');
+	};
+
+	exports.default = Mod1;
+
+	//export default { mod1,mod2,mod3}
 
 /***/ })
 /******/ ]);
