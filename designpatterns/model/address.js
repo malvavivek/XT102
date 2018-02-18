@@ -4,11 +4,11 @@ class Model{
     constructor(city,street){
         this.city= city;
         this.street=street;
-        this.addresscopied = new Observer();   
+        this.addressCopy = new Observer();   
     }
     copy(city,street){
      
-        this.addresscopied.notify(city,street);
+        this.addressCopy.notify(city,street);
     }
 }
 export default new Model();

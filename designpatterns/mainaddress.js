@@ -101,7 +101,7 @@
 	        value: function initialize() {
 	            var _this = this;
 
-	            this.model.addresscopied.attach(function (paymentCity, paymentStreet) {
+	            this.model.addressCopy.attach(function (paymentCity, paymentStreet) {
 
 	                _this.renderShippingAddress(paymentCity, paymentStreet);
 	            });
@@ -194,14 +194,14 @@
 
 	        this.city = city;
 	        this.street = street;
-	        this.addresscopied = new _listeneraddress2.default();
+	        this.addressCopy = new _listeneraddress2.default();
 	    }
 
 	    _createClass(Model, [{
 	        key: "copy",
 	        value: function copy(city, street) {
 
-	            this.addresscopied.notify(city, street);
+	            this.addressCopy.notify(city, street);
 	        }
 	    }]);
 

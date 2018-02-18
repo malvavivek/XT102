@@ -9,7 +9,7 @@ export default class View{
     }
     initialize(){
        
-        this.model.addresscopied.attach((paymentCity,paymentStreet)=>{
+        this.model.addressCopy.attach((paymentCity,paymentStreet)=>{
             
             this.renderShippingAddress(paymentCity,paymentStreet);
         });
