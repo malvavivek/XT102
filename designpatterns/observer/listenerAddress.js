@@ -8,7 +8,6 @@ export default class Observer {
     }
     notify(newAddress) {
         this.observers.forEach((cb) => {
-            debugger;
             cb(newAddress);
         });
     }
