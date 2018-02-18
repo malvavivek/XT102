@@ -6,9 +6,9 @@ export default class Observer {
     attach(cb) {//getting attached
         this.observers.push(cb);
     }
-    notify(newAddress) {
+    notify(city,street) {
         this.observers.forEach((cb) => {
-            cb(newAddress);
+            cb(city,street);
         });
     }
 }

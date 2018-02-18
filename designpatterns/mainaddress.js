@@ -55,8 +55,10 @@
 	(function () {
 	    var view = new _addressview2.default({
 	        checkBox: document.querySelector('#checkbox'),
-	        paymentAddress: document.getElementById('payment-address'),
-	        shippingAddress: document.getElementById('shipping-address')
+	        paymentCity: document.getElementById('payment-city'),
+	        paymentStreet: document.getElementById('payment-street'),
+	        shippingCity: document.getElementById('shipping-city'),
+	        shippingStreet: document.getElementById('shipping-street')
 	    });
 	    view.initialize();
 	})();
@@ -99,24 +101,26 @@
 	        value: function initialize() {
 	            var _this = this;
 
-	            this.model.addresscopied.attach(function (paymentAddress) {
-	                debugger;
-	                _this.renderShippingAddress(paymentAddress);
+	            this.model.addresscopied.attach(function (paymentCity, paymentStreet) {
+
+	                _this.renderShippingAddress(paymentCity, paymentStreet);
 	            });
 	            this.elements.checkBox.addEventListener('change', function (e) {
 	                if (e.target.checked) {
-	                    debugger;
-	                    _this.controller.copy(_this.elements.paymentAddress.value);
+
+	                    _this.controller.copy(_this.elements.paymentCity.value, _this.elements.paymentStreet.value);
 	                } else {
-	                    _this.elements.shippingAddress.value = " ";
+	                    _this.elements.shippingCity.value = " ";
+	                    _this.elements.shippingStreet.value = " ";
 	                }
 	            });
 	        }
 	    }, {
 	        key: "renderShippingAddress",
-	        value: function renderShippingAddress(newAddress) {
-	            debugger;
-	            this.elements.shippingAddress.value = newAddress;
+	        value: function renderShippingAddress(newCity, newStreet) {
+
+	            this.elements.shippingCity.value = newCity;
+	            this.elements.shippingStreet.value = newStreet;
 	        }
 	    }]);
 
@@ -154,9 +158,8 @@
 
 	    _createClass(Controller, [{
 	        key: "copy",
-	        value: function copy(address) {
-	            debugger;
-	            this.model.copy(address);
+	        value: function copy(city, street) {
+	            this.model.copy(city, street);
 	        }
 	    }]);
 
@@ -186,18 +189,19 @@
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 	var Model = function () {
-	    function Model(address) {
+	    function Model(city, street) {
 	        _classCallCheck(this, Model);
 
-	        this.address = address;
+	        this.city = city;
+	        this.street = street;
 	        this.addresscopied = new _listeneraddress2.default();
 	    }
 
 	    _createClass(Model, [{
 	        key: "copy",
-	        value: function copy(address) {
-	            debugger;
-	            this.addresscopied.notify(address);
+	        value: function copy(city, street) {
+
+	            this.addresscopied.notify(city, street);
 	        }
 	    }]);
 
@@ -235,10 +239,9 @@
 	        }
 	    }, {
 	        key: "notify",
-	        value: function notify(newAddress) {
+	        value: function notify(city, street) {
 	            this.observers.forEach(function (cb) {
-	                debugger;
-	                cb(newAddress);
+	                cb(city, street);
 	            });
 	        }
 	    }]);

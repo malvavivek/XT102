@@ -5,10 +5,14 @@ import View from "./view/addressview";
     let view = new View({
         checkBox:
             document.querySelector('#checkbox'),
-        paymentAddress:
-            document.getElementById('payment-address'),
-        shippingAddress:
-            document.getElementById('shipping-address')        
+        paymentCity:
+            document.getElementById('payment-city'),
+        paymentStreet:
+            document.getElementById('payment-street'),
+        shippingCity:
+            document.getElementById('shipping-city'),
+        shippingStreet:
+            document.getElementById('shipping-street')        
     });
     view.initialize();
 })();

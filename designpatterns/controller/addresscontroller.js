@@ -4,7 +4,7 @@ export default class Controller{
     constructor(){
         this.model = Model;
     }
-     copy(address){
-         this.model.copy(address);
+     copy(city,street){
+         this.model.copy(city,street);
      }
 }

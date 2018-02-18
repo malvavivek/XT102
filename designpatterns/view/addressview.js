@@ -9,23 +9,25 @@ export default class View{
     }
     initialize(){
        
-        this.model.addresscopied.attach((paymentAddress)=>{
+        this.model.addresscopied.attach((paymentCity,paymentStreet)=>{
             
-            this.renderShippingAddress(paymentAddress);
+            this.renderShippingAddress(paymentCity,paymentStreet);
         });
         this.elements.checkBox.addEventListener('change',(e)=>{
             if(e.target.checked){
                 
-                this.controller.copy(this.elements.paymentAddress.value);
+                this.controller.copy(this.elements.paymentCity.value,this.elements.paymentStreet.value);
             }
             else{
-                this.elements.shippingAddress.value =" ";
+                this.elements.shippingCity.value =" ";
+                this.elements.shippingStreet.value =" ";
             }
         });
     }
-    renderShippingAddress(newAddress){
+    renderShippingAddress(newCity,newStreet){
         
-        this.elements.shippingAddress.value = newAddress;
+        this.elements.shippingCity.value = newCity;
+        this.elements.shippingStreet.value = newStreet;
         
     }
 }
