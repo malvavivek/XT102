@@ -1,14 +1,15 @@
+
 export default class Observer {
-    constructor (observers) {
-        //array for multiple views
-        this.observers = [];
+    constructor(observers) {
+        this.observers = [];//for multiple views
     }
-    attach(cb) {
+    attach(cb) {//getting attached
         this.observers.push(cb);
     }
-    notify(newCity) {
-        this.observers.forEach((cb)=>{
-            cb(newCity);
-        })
+    notify(newAddress) {
+        this.observers.forEach((cb) => {
+            debugger;
+            cb(newAddress);
+        });
     }
 }

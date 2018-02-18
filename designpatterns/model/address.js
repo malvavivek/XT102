@@ -1,9 +1,9 @@
 
 class Model{
-    constructor(city,street)
+    constructor(city)
     {
         this.city=city;
-        this.street=street;
+        //this.street=street;
     }
 }
 export default new Model()
