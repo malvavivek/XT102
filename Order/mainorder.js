@@ -111,8 +111,9 @@
 	                _this.renderOrderList(meal, calories, total);
 	            });
 	            this.elements.addButton.addEventListener('click', function (e) {
-
-	                _this.controller.copy(_this.elements.Meal.value, _this.elements.Calories.value);
+	                if (_this.elements.Meal.value != "" && _this.elements.Calories.value != "") {
+	                    _this.controller.copy(_this.elements.Meal.value, _this.elements.Calories.value);
+	                }
 	            });
 	        }
 	    }, {

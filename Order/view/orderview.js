@@ -14,9 +14,9 @@ export default class View{
             this.renderOrderList(meal,calories,total);
         });
         this.elements.addButton.addEventListener('click',(e)=>{
-            
+            if(this.elements.Meal.value!="" && this.elements.Calories.value !=""){
                 this.controller.copy(this.elements.Meal.value,this.elements.Calories.value);
-            
+            }
             
            
         });
