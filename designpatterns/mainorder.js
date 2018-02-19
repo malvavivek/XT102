@@ -57,7 +57,6 @@
 	        Meal: document.querySelector('#meal'),
 	        Calories: document.querySelector('#calorie'),
 	        addButton: document.getElementsByClassName('addBtn')[0],
-	        editButton: document.getElementsByClassName('editBtn')[0],
 	        deleteButton: document.getElementsByClassName('deleteBtn')[0],
 	        backButton: document.getElementsByClassName('backBtn')[0],
 	        clearButton: document.getElementsByClassName('clrBtn')[0],
@@ -65,7 +64,6 @@
 	        orderTable: document.querySelector('table')
 	    });
 	    view.initialize();
-	    console.log("finished");
 	})();
 
 /***/ }),
@@ -107,28 +105,35 @@
 	            var _this = this;
 
 	            this.model.orderCopy.attach(function (meal, calories, total) {
-	                debugger;
+
 	                _this.renderOrderList(meal, calories, total);
 	            });
 	            this.elements.addButton.addEventListener('click', function (e) {
+	                if (_this.elements.Meal.value != '' && _this.elements.Calories.value >= 0) {
+	                    _this.controller.copy(_this.elements.Meal.value, _this.elements.Calories.value);
+	                }
 
-	                _this.controller.copy(_this.elements.Meal.value, _this.elements.Calories.value);
+	                // this.elements.Meal.value='';
+	                // this.elements.Calories.value='';
 	            });
 	        }
 	    }, {
 	        key: "renderOrderList",
 	        value: function renderOrderList(newMeal, newCalories, newTotal) {
-	            debugger;
-	            // let orderTable =document.getElementsByClassName('table')[0];
+	            var _this2 = this;
+
 	            var cap = document.getElementById('totalCap');
 	            var trow = document.createElement('tr');
 	            var data1 = document.createElement('td');
 	            var data2 = document.createElement('td');
-	            var data3 = document.createElement('td');
-	            var editbutton = document.createElement('button');
 
-	            editbutton.innerHTML = 'edit';
-	            data3.appendChild(editbutton);
+	            var data3 = document.createElement('td');
+	            var editButton = document.createElement('button');
+
+	            editButton.innerHTML = 'edit';
+	            editButton.type = 'Button';
+
+	            data3.appendChild(editButton);
 	            data1.innerHTML = newMeal;
 	            data2.innerHTML = newCalories;
 	            trow.appendChild(data1);
@@ -138,7 +143,18 @@
 	            this.elements.orderTable.appendChild(trow);
 
 	            cap.innerHTML = newTotal;
-	            // data3.innerHTML = editbutton;
+	            editButton.addEventListener('click', function (e) {
+	                _this2.elements.addButton.className += 'displayNone';
+	                _this2.elements.updateButton.classList.remove('displayNone');
+	                _this2.elements.deleteButton.classList.remove('displayNone');
+	                _this2.elements.backButton.classList.remove('displayNone');
+	            });
+	            this.elements.backButton.addEventListener('click', function (e) {
+	                _this2.elements.addButton.classList.add('displayBlock');
+	                _this2.elements.updateButton.classList.add('displayNone');
+	                _this2.elements.deleteButton.classList.add('displayNone');
+	                _this2.elements.backButton.classList.add('displayNone');
+	            });
 	        }
 	    }]);
 
@@ -222,7 +238,7 @@
 	        value: function copy(meal, calories) {
 	            this.meal = meal;
 	            this.calories = calories;
-	            this.total += this.calories;
+	            this.total = this.total + parseInt(this.calories);
 	            this.orderCopy.notify(meal, calories, this.total);
 	        }
 	    }]);

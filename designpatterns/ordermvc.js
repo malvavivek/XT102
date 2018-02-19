@@ -9,8 +9,6 @@ import View from "./view/orderview";
             document.querySelector('#calorie'),
         addButton:
             document.getElementsByClassName('addBtn')[0],
-        editButton:
-            document.getElementsByClassName('editBtn')[0],
         deleteButton:
             document.getElementsByClassName('deleteBtn')[0],
         backButton:
@@ -23,5 +21,4 @@ import View from "./view/orderview";
             document.querySelector('table')
     });
     view.initialize();
-    console.log("finished");
 })();

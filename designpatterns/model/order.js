@@ -11,7 +11,7 @@ class Model{
     copy(meal,calories){
         this.meal= meal;
         this.calories=calories;
-        this.total+=this.calories;
+        this.total=this.total+parseInt(this.calories);
         this.orderCopy.notify(meal,calories,this.total);
     }
 }
