@@ -1,8 +1,8 @@
 module.exports = {
-    entry: './addressmvc.js',
+    entry: './ordermvc.js',
    output: {
       publicPath: '/',
-      filename: 'mainaddress.js'
+      filename: 'mainorder.js'
   },
     module: {
         loaders: [{

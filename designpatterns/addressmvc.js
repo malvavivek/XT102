@@ -12,7 +12,8 @@ import View from "./view/addressview";
         shippingCity:
             document.getElementById('shipping-city'),
         shippingStreet:
-            document.getElementById('shipping-street')        
+            document.getElementById('shipping-street'),
+            
     });
     view.initialize();
 })();
