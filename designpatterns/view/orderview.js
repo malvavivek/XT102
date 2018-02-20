@@ -29,15 +29,23 @@ export default class View{
                 this.elements.Calories.value='';
             }    
         });
+        this.elements.updateButton.addEventListener('click',(e)=>{
+            this.controller.update(this.elements.Meal.value,this.elements.Calories.value);
+            this.elements.Meal.value='';
+            this.elements.Calories.value='';
+          
+    });
+       this.elements.deleteButton.addEventListener('click',(e)=>{
+        this.controller.delete(this.elements.Meal.value,this.elements.Calories.value);
+        this.elements.Meal.value='';
+        this.elements.Calories.value='';
+          
+       });
         this.elements.clearButton.addEventListener('click',(e)=>{
         this.elements.tableRow.innerHTML="";
         this.elements.Meal.value="";
         this.elements.Calories.value="";
-        
-
-        
-
-    });
+         });
     }
     renderOrderList(newMeal,newCalories,newTotal){
         let cap=document.getElementById('totalCap');
