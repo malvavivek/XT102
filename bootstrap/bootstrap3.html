@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sapient Nitro</title>
+  <!-- <link rel="stylesheet" href="css/bootstrap.min.css"> -->
+  <!-- Latest compiled and minified CSS -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+  <!-- Optional theme -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+</head>
+
+<body style="margin-top:70px">
+  <div id="page">
+    <header class="container-fluid ">
+      <div id="menu" class="navbar navbar-default navbar-fixed-top">
+        <div class="navbar-header">
+          <button class="btn btn-success navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+            <span class="glyphicon glyphicon-chevron-down"></span>
+          </button>
+          <div id="logo">
+            <a href='.'>
+              <h4>Sapient Nitro</h4>
+            </a>
+          </div>
+        </div>
+        <div class="navbar-collapse collapse">
+          <ul class="nav navbar-nav navbar-right">
+            <li class="nav"><a href=".">Home</a>
+            </li>
+            <li class="nav"><a href="about.html">About</a>
+            </li>
+            <li class=" active"><a href="contact.html">Contact</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </header>
+<!-- 
+    form-vertical   (default)
+    horizontal form
+    inline form
+     -->
+    <section id="body" class="container">
+      <h1>Contact Us</h1>
+      <p> but it's an example of a form. Easy, man. Relax, man.</p>
+      <div class="row">
+        <form class="form-horizontal">
+          <div class="form-group">
+            <label for="nameInput" class="control-label col-sm-2">Your Name</label>
+            <div class="col-md-10">
+              <input type="text" name="nameInput" class="form-control" placeholder="e.g. Your Name" />
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="emailInput" class="control-label col-sm-2">Email</label>
+            <div class="col-md-10">
+              <input type="email" name="emailInput" class="form-control" placeholder="e.g. Your Email" />
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="control-label col-sm-2">Reason</label>
+            <div class="col-md-10">
+              <!-- <select class="form-control">
+                <option>Adoration</option>
+                <option>Ordering a White Russian</option>
+                <option>Complaint</option>
+                <option>I am lost</option>
+              </select> -->
+              <div class="dropdown">
+                  <button class="btn btn-success">Select One</button>
+                  <!-- <input type="button" class="btn btn-success"> -->
+                  <button class="btn btn-success" data-toggle="dropdown">
+                  <span class="caret"></span></button>
+                  <ul class="dropdown-menu">
+                  <li><a tabindex="-1">Adoration</a></li>
+                  <li><a tabindex="-1">Ordering a White Russian</a></li>
+                  <li><a tabindex="-1">Complaint</a></li>
+                  <li><a tabindex="-1">I am lost</a></li>
+                </ul>
+                
+              </div>
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="control-label col-sm-2">Message</label>
+            <div class="col-md-10">
+              <textarea cols="40" rows="6" class="form-control" placeholder="e.g. The Message"></textarea>
+            </div>
+          </div>
+          <div class="form-group">
+            <div class="col-md-10 col-md-offset-2">
+              <input type="submit" value="Submit" class="btn btn-outline btn-warning" />
+            </div>
+          </div>
+        </form>
+      </div>
+      <h3>Our fake address</h3>
+      <div>
+        <address>
+         Sapient Fan Page
+          <br />123 Main Street
+          <br />Bangalore, IN 560098
+          <br />
+          <abbr title="Phone">P:</abbr>
+          080-9999999
+        </address>
+        <address>
+          <strong>Support:</strong> <a href="mailto:Support@sapientfansite.com">Support@sapientfansite.com</a>
+          <br />
+          <strong>Marketing:</strong> <a href="mailto:Marketing@sapientfansite.com">Marketing@sapientfansite.com</a>
+        </address>
+      </div>
+    </section>
+    <hr />
+    <footer class="container">
+      <p>Text placeholders courtesy of <a href="http://www.sapient.com/">Sapient</a>.</p>
+
+    </footer>
+  </div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+<!-- Latest compiled and minified JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>	
+</body>
+
+</html>

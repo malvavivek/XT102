@@ -61,7 +61,8 @@
 	        backButton: document.getElementsByClassName('backBtn')[0],
 	        clearButton: document.getElementsByClassName('clrBtn')[0],
 	        updateButton: document.getElementsByClassName('updateBtn')[0],
-	        orderTable: document.querySelector('table')
+	        orderTable: document.querySelector('table'),
+	        tableRow: document.getElementById('tableBody')
 	    });
 	    view.initialize();
 	})();
@@ -111,10 +112,14 @@
 	            this.elements.addButton.addEventListener('click', function (e) {
 	                if (_this.elements.Meal.value != '' && _this.elements.Calories.value >= 0) {
 	                    _this.controller.copy(_this.elements.Meal.value, _this.elements.Calories.value);
+	                    _this.elements.Meal.value = '';
+	                    _this.elements.Calories.value = '';
 	                }
-
-	                // this.elements.Meal.value='';
-	                // this.elements.Calories.value='';
+	            });
+	            this.elements.clearButton.addEventListener('click', function (e) {
+	                _this.elements.tableRow.innerHTML = "";
+	                _this.elements.Meal.value = "";
+	                _this.elements.Calories.value = "";
 	            });
 	        }
 	    }, {
@@ -140,7 +145,7 @@
 	            trow.appendChild(data2);
 	            trow.appendChild(data3);
 
-	            this.elements.orderTable.appendChild(trow);
+	            this.elements.tableRow.appendChild(trow);
 
 	            cap.innerHTML = newTotal;
 	            editButton.addEventListener('click', function (e) {
@@ -148,6 +153,26 @@
 	                _this2.elements.updateButton.classList.remove('displayNone');
 	                _this2.elements.deleteButton.classList.remove('displayNone');
 	                _this2.elements.backButton.classList.remove('displayNone');
+	                editButton.disabled = "true";
+	                _this2.elements.Meal.value = e.currentTarget.parentNode.parentNode.childNodes[0].innerHTML;
+	                _this2.elements.Calories.value = e.currentTarget.parentNode.parentNode.childNodes[1].innerHTML;
+	                _this2.elements.deleteButton.addEventListener('click', function (d) {
+	                    cap.innerHTML -= _this2.elements.Calories.value;
+	                    _this2.elements.Meal.value = '';
+	                    _this2.elements.Calories.value = '';
+	                    e.target.parentNode.parentNode.remove();
+	                    _this2.elements.addButton.classList.add('displayBlock');
+	                    _this2.elements.updateButton.classList.add('displayNone');
+	                    _this2.elements.deleteButton.classList.add('displayNone');
+	                    _this2.elements.backButton.classList.add('displayNone');
+	                });
+	                _this2.elements.updateButton.addEventListener('click', function (f) {
+	                    var cap1 = cap.innerHTML - parseInt(e.target.parentNode.parentNode.childNodes[1].innerHTML);
+
+	                    e.target.parentNode.parentNode.childNodes[0].innerHTML = _this2.elements.Meal.value;
+	                    e.target.parentNode.parentNode.childNodes[1].innerHTML = _this2.elements.Calories.value;
+	                    cap.innerHTML = cap1 + parseInt(e.target.parentNode.parentNode.childNodes[1].innerHTML);
+	                });
 	            });
 	            this.elements.backButton.addEventListener('click', function (e) {
 	                _this2.elements.addButton.classList.add('displayBlock');
@@ -195,6 +220,16 @@
 	        value: function copy(meal, calories) {
 	            this.model.copy(meal, calories);
 	        }
+	    }, {
+	        key: "update",
+	        value: function update(meal, calories) {
+	            this.model.update(meal, calories);
+	        }
+	    }, {
+	        key: "delete",
+	        value: function _delete(meal, calories) {
+	            this.model.delete(meal, calories);
+	        }
 	    }]);
 
 	    return Controller;
@@ -229,8 +264,9 @@
 	        this.meal = meal;
 	        this.calories = calories;
 	        this.total = 0;
-
 	        this.orderCopy = new _listenerorder2.default();
+	        this.orderUpdate = new _listenerorder2.default();
+	        this.orderDelete = new _listenerorder2.default();
 	    }
 
 	    _createClass(Model, [{
@@ -240,6 +276,22 @@
 	            this.calories = calories;
 	            this.total = this.total + parseInt(this.calories);
 	            this.orderCopy.notify(meal, calories, this.total);
+	        }
+	    }, {
+	        key: "update",
+	        value: function update(meal, calories) {
+	            this.meal = meal;
+	            this.calories = calories;
+	            this.total = this.total + parseInt(this.calories);
+	            this.orderUpdate.notify(meal, calories, this.total);
+	        }
+	    }, {
+	        key: "delete",
+	        value: function _delete(meal, calories) {
+	            this.meal = meal;
+	            this.calories = calories;
+	            this.total = this.total + parseInt(this.calories);
+	            this.orderDelete.notify(meal, calories, this.total);
 	        }
 	    }]);
 

@@ -18,7 +18,9 @@ import View from "./view/orderview";
         updateButton:
             document.getElementsByClassName('updateBtn')[0],
         orderTable:
-            document.querySelector('table')
+            document.querySelector('table'),
+        tableRow:
+            document.getElementById('tableBody')
     });
     view.initialize();
 })();

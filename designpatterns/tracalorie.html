@@ -4,6 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title></title>
     <link rel="stylesheet" href="">
     <style>
@@ -29,7 +30,7 @@
         font-size: 22px;
     }
 
-    .clrbtn {
+    .clrBtn {
         border: 1px solid #00e6e6;
         width: 120px;
         height: 30px;
@@ -62,7 +63,7 @@
 
     #meal,
     #calorie {
-        width: 90%;
+        width: 98%;
     }
 
     .btnContainer {
@@ -70,7 +71,8 @@
     }
 
     .Btn {
-        width: 120px;
+        width: 8%;
+        min-width: 85px;
         height: 25px;
         color: white;
     }
@@ -93,7 +95,7 @@
     .backBtn {
         border: 1px solid #7a7a52;
         float: right;
-        width: 100px;
+       
     }
 
     .displayNone {
@@ -142,7 +144,7 @@
 
 <body>
     <header class="header">
-        <h1>Tracalorie<span><button class="clrbtn">Clear All</button></span></h1>
+        <h1>Tracalorie<span><button class="clrBtn ">Clear All</button></span></h1>
     </header>
     <fieldset class="field">
         <form>
@@ -167,13 +169,15 @@
             </div>
             <hr>
             <table class="table" >
-                <caption>Total Calories: <span id="totalCap">0</span></caption>
+                <caption class="">Total Calories: <span id="totalCap">0</span></caption>
                 <!-- <tr>
                     <td class="heading">Burger:</td>
                     <td><span>500</span> Calories</td>
                     <td><button><img src="editButton.png" alt=""></button?</td>
                 </tr> -->
-                
+                <tbody id="tableBody">
+                    
+                </tbody>
             </table>
         </form>
     </fieldset>
