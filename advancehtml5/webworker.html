@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+        <article>
+                <section>
+                    
+            <div id="msg"></div>
+                    
+            <input type="button" id="start" 
+            value="Start"/>
+            <input type="button" id="stop" 
+            value="Stop"/>
+            <input type="button" id="pause" 
+            value="pause"/>
+            <h2>Result 
+                    <output id="result">
+                        </output></h2>
+                  <ul id="log"></ul>  
+        
+                </section>
+            </article>
+            <!-- <script src="withoutwebworker.js"></script> -->
+           
+            <script>
+            (function(){
+                let result=document.querySelector('#result');
+                let worker=null;
+                document.querySelector('#start').addEventListener('click',(e)=>{
+                    worker=new Worker('webworker.js');
+                    worker.onmessage=(e)=>{
+                        let parseData=JSON.parse(e.data);
+                        result.innerHTML=parseData.Root
+                    }
+                    worker.onerror=(e)=>{
+                        alert(e.message);
+                    }
+                    worker.postMessage('start');
+                })
+            })();
+            </script>
+</body>
+</html>

@@ -109,12 +109,30 @@
 
 	                _this.renderOrderList(meal, calories, total);
 	            });
+	            this.model.orderUpdate.attach(function (meal, calories, total) {
+
+	                _this.renderOrderList(meal, calories, total);
+	            });
+	            this.model.orderDelete.attach(function (meal, calories, total) {
+
+	                _this.renderOrderList(meal, calories, total);
+	            });
 	            this.elements.addButton.addEventListener('click', function (e) {
 	                if (_this.elements.Meal.value != '' && _this.elements.Calories.value >= 0) {
 	                    _this.controller.copy(_this.elements.Meal.value, _this.elements.Calories.value);
 	                    _this.elements.Meal.value = '';
 	                    _this.elements.Calories.value = '';
 	                }
+	            });
+	            this.elements.updateButton.addEventListener('click', function (e) {
+	                _this.controller.update(_this.elements.Meal.value, _this.elements.Calories.value);
+	                _this.elements.Meal.value = '';
+	                _this.elements.Calories.value = '';
+	            });
+	            this.elements.deleteButton.addEventListener('click', function (e) {
+	                _this.controller.delete(_this.elements.Meal.value, _this.elements.Calories.value);
+	                _this.elements.Meal.value = '';
+	                _this.elements.Calories.value = '';
 	            });
 	            this.elements.clearButton.addEventListener('click', function (e) {
 	                _this.elements.tableRow.innerHTML = "";
@@ -274,23 +292,24 @@
 	        value: function copy(meal, calories) {
 	            this.meal = meal;
 	            this.calories = calories;
+
 	            this.total = this.total + parseInt(this.calories);
-	            this.orderCopy.notify(meal, calories, this.total);
+	            // this.orderCopy.notify(this.meal,this.calories,this.total);
 	        }
 	    }, {
 	        key: "update",
 	        value: function update(meal, calories) {
 	            this.meal = meal;
 	            this.calories = calories;
-	            this.total = this.total + parseInt(this.calories);
-	            this.orderUpdate.notify(meal, calories, this.total);
+
+	            this.orderUpdate.notify(this.meal, this.calories, this.total);
 	        }
 	    }, {
 	        key: "delete",
 	        value: function _delete(meal, calories) {
 	            this.meal = meal;
 	            this.calories = calories;
-	            this.total = this.total + parseInt(this.calories);
+
 	            this.orderDelete.notify(meal, calories, this.total);
 	        }
 	    }]);
