@@ -102,7 +102,7 @@
 	        this.elements = elements;
 	        this.model = new _mealOrder2.default();
 	        this.controller = _mealCtrl2.default;
-	        this.items = _mealstorage2.default.getMeals();
+	        this.mealDetails = _mealstorage2.default;
 	    }
 
 	    _createClass(View, [{
@@ -110,49 +110,51 @@
 	        value: function initialize() {
 	            var _this = this;
 
-	            this.renderOrderList(this.items);
-	            // this.model.orderCopy.attach((meal,calories,total)=>{
+	            // this.model.orderCopy.attach((meal,calorie,total)=>{
 
-	            //     this.renderOrderList(meal,calories,total);
+	            //     this.renderOrderList(meal,calorie,total);
 	            // });
-	            // this.model.orderUpdate.attach((meal,calories,total)=>{
+	            // this.model.orderUpdate.attach((meal,calorie,total)=>{
 
-	            //     this.renderOrderList(meal,calories,total);
+	            //     this.renderOrderList(meal,calorie,total);
 	            // });
-	            // this.model.orderDelete.attach((meal,calories,total)=>{
+	            // this.model.orderDelete.attach((meal,calorie,total)=>{
 
-	            //     this.renderOrderList(meal,calories,total);
+	            //     this.renderOrderList(meal,calorie,total);
 	            // });
 	            this.elements.addButton.addEventListener('click', function (e) {
 	                if (_this.elements.Meal.value != '' && _this.elements.Calories.value >= 0) {
 	                    _this.controller.addMeal(_this.elements.Meal.value, _this.elements.Calories.value);
 	                    _this.elements.Meal.value = '';
 	                    _this.elements.Calories.value = '';
-	                    console.log("addbutton");
+	                    _this.renderOrderList(_this.mealDetails.getMeals());
 	                }
 	            });
-	            //     this.elements.updateButton.addEventListener('click',(e)=>{
-	            //         this.controller.update(this.elements.Meal.value,this.elements.Calories.value);
-	            //         this.elements.Meal.value='';
-	            //         this.elements.Calories.value='';
-
-	            // });
-	            //    this.elements.deleteButton.addEventListener('click',(e)=>{
-	            //     this.controller.delete(this.elements.Meal.value,this.elements.Calories.value);
-	            //     this.elements.Meal.value='';
-	            //     this.elements.Calories.value='';
-
-	            //    });
-	            //     this.elements.clearButton.addEventListener('click',(e)=>{
-	            //     this.elements.tableRow.innerHTML="";
-	            //     this.elements.Meal.value="";
-	            //     this.elements.Calories.value="";
-	            //      });
+	            this.elements.updateButton.addEventListener('click', function (e) {
+	                _this.controller.updateMeal(_this.elements.Meal.value, _this.elements.Calories.value);
+	                _this.elements.Meal.value = '';
+	                _this.elements.Calories.value = '';
+	                _this.renderOrderList(_this.mealDetails.getMeals());
+	            });
+	            this.elements.deleteButton.addEventListener('click', function (e) {
+	                _this.controller.removeMeal(_this.elements.Meal.value, _this.elements.calorie.value);
+	                _this.elements.Meal.value = '';
+	                _this.elements.Calories.value = '';
+	                _this.renderOrderList(_this.mealDetails.getMeals());
+	            });
+	            this.elements.clearButton.addEventListener('click', function (e) {
+	                _this.elements.tableRow.innerHTML = "";
+	                _this.elements.Meal.value = "";
+	                _this.elements.Calories.value = "";
+	            });
 	        }
 	    }, {
 	        key: "renderOrderList",
-	        value: function renderOrderList(items) {
-	            for (var i = 0; i <= items.length; i++) {
+	        value: function renderOrderList(mealDetails) {
+	            var _this2 = this;
+
+	            var _loop = function _loop(i) {
+
 	                var cap = document.getElementById('totalCap');
 	                var trow = document.createElement('tr');
 	                var data1 = document.createElement('td');
@@ -165,53 +167,63 @@
 	                editButton.type = 'Button';
 
 	                data3.appendChild(editButton);
-	                data1.innerHTML = items.meal;
-	                data2.innerHTML = items.calorie;
+
 	                trow.appendChild(data1);
 	                trow.appendChild(data2);
 	                trow.appendChild(data3);
 
-	                this.elements.tableRow.appendChild(trow);
+	                _this2.elements.tableRow.appendChild(trow);
+	                console.log(_this2.elements.orderTable.rows.length);
+	                var mealOrder = JSON.parse(localStorage.getItem('meals'));
+	                var trIndex = _this2.elements.orderTable.rows.length;
+	                for (var _trIndex in mealOrder) {
+	                    data1.innerHTML = mealOrder[_trIndex].meal;
+	                    data2.innerHTML = mealOrder[_trIndex].calorie;
+	                    // cap.innerHTML=newTotal;
+	                }
+	                editButton.addEventListener('click', function (e) {
+	                    _this2.elements.addButton.className += 'displayNone';
+	                    _this2.elements.updateButton.classList.remove('displayNone');
+	                    _this2.elements.deleteButton.classList.remove('displayNone');
+	                    _this2.elements.backButton.classList.remove('displayNone');
+	                    editButton.disabled = "true";
+	                    _this2.elements.Meal.value = e.currentTarget.parentNode.parentNode.childNodes[0].innerHTML;
+	                    _this2.elements.Calories.value = e.currentTarget.parentNode.parentNode.childNodes[1].innerHTML;
+	                    _this2.elements.deleteButton.addEventListener('click', function (d) {
+	                        cap.innerHTML -= _this2.elements.calorie.value;
+	                        _this2.elements.Meal.value = '';
+	                        _this2.elements.Calories.value = '';
+	                        e.target.parentNode.parentNode.remove();
+	                        _this2.elements.addButton.classList.add('displayBlock');
+	                        _this2.elements.updateButton.classList.add('displayNone');
+	                        _this2.elements.deleteButton.classList.add('displayNone');
+	                        _this2.elements.backButton.classList.add('displayNone');
+	                    });
+	                    _this2.elements.updateButton.addEventListener('click', function (f) {
+	                        var cap1 = cap.innerHTML - parseInt(e.target.parentNode.parentNode.childNodes[1].innerHTML);
+	                        var mealOrder = JSON.parse(localStorage.getItem('meals'));
+	                        var trIndex = _this2.elements.orderTable.rows.length;
+	                        for (var _trIndex2 in mealOrder) {
+	                            mealOrder[_trIndex2].meal;
+	                            data2.innerHTML = mealOrder[_trIndex2].calorie;
+	                            // cap.innerHTML=newTotal;
+	                        }
+	                        e.target.parentNode.parentNode.childNodes[0].innerHTML = _this2.elements.Meal.value;
+	                        e.target.parentNode.parentNode.childNodes[1].innerHTML = _this2.elements.Calories.value;
+	                        cap.innerHTML = cap1 + parseInt(e.target.parentNode.parentNode.childNodes[1].innerHTML);
+	                    });
+	                });
+	                _this2.elements.backButton.addEventListener('click', function (e) {
+	                    _this2.elements.addButton.classList.add('displayBlock');
+	                    _this2.elements.updateButton.classList.add('displayNone');
+	                    _this2.elements.deleteButton.classList.add('displayNone');
+	                    _this2.elements.backButton.classList.add('displayNone');
+	                });
+	            };
 
-	                //  cap.innerHTML=newTotal;
+	            for (var i = 0; i <= mealDetails.length; i++) {
+	                _loop(i);
 	            }
-	            // editButton.addEventListener('click',(e)=>{  
-	            //     this.elements.addButton.className+='displayNone';
-	            //     this.elements.updateButton.classList.remove('displayNone');
-	            //     this.elements.deleteButton.classList.remove('displayNone');
-	            //     this.elements.backButton.classList.remove('displayNone');
-	            //     editButton.disabled="true";
-	            //     this.elements.Meal.value=e.currentTarget.parentNode.parentNode.childNodes[0].innerHTML;
-	            //     this.elements.Calories.value=e.currentTarget.parentNode.parentNode.childNodes[1].innerHTML;
-	            //     this.elements.deleteButton.addEventListener('click',(d)=>{  
-	            //         cap.innerHTML-=this.elements.Calories.value;
-	            //         this.elements.Meal.value='';
-	            //         this.elements.Calories.value='';
-	            //         e.target.parentNode.parentNode.remove();
-	            //         this.elements.addButton.classList.add('displayBlock');
-	            //         this.elements.updateButton.classList.add('displayNone');
-	            //         this.elements.deleteButton.classList.add('displayNone');
-	            //         this.elements.backButton.classList.add('displayNone');
-
-
-	            //     });
-	            //     this.elements.updateButton.addEventListener('click',(f)=>{
-	            //        let cap1=cap.innerHTML-parseInt(e.target.parentNode.parentNode.childNodes[1].innerHTML);
-
-	            //          e.target.parentNode.parentNode.childNodes[0].innerHTML=this.elements.Meal.value;
-	            //          e.target.parentNode.parentNode.childNodes[1].innerHTML=this.elements.Calories.value;
-	            //          cap.innerHTML=cap1+parseInt(e.target.parentNode.parentNode.childNodes[1].innerHTML);
-	            //     });
-	            // });
-	            // this.elements.backButton.addEventListener('click',(e)=>{  
-	            //     this.elements.addButton.classList.add('displayBlock');
-	            //     this.elements.updateButton.classList.add('displayNone');
-	            //     this.elements.deleteButton.classList.add('displayNone');
-	            //     this.elements.backButton.classList.add('displayNone');
-
-
-	            // });
-
 	        }
 	    }]);
 
@@ -407,21 +419,21 @@
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 	var Model = function () {
-	    function Model(id, meal, calories) {
+	    function Model(id, meal, calorie) {
 	        _classCallCheck(this, Model);
 
 	        // this.static.total =0;
 	        this.id = id;
 	        this.meal = meal;
-	        this.calories = calories;
+	        this.calorie = calorie;
 	        this.orderAdd = new _listenerorder2.default();
 	    }
 
 	    _createClass(Model, [{
 	        key: "addMeal",
-	        value: function addMeal(meal, calories) {
-	            total += calories;
-	            this.orderAdd.notify(meal, calories, total);
+	        value: function addMeal(meal, calorie) {
+	            total += calorie;
+	            this.orderAdd.notify(meal, calorie, total);
 	        }
 	    }]);
 
