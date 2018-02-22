@@ -1,7 +1,7 @@
 let i=100;
+let intervalId=0;
+let response={"message":"","Root":0};
 let taskHandler=function(e){
-    let intervalId=0;
-    let response={"message":"","Root":0};
     if(e.data === 'start'){
         try{
             intervalId=setInterval(()=>{

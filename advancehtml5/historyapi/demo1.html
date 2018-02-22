@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title></title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        
+    </head>
+    <body>
+            <div id="page-wrapper">
+                    <nav>
+                      <ul>
+                        <li><a href="index.html" class="load-content">Home</a></li>
+                        <li><a href="movies.html" class="load-content">Movies</a></li>
+                        <li><a href="trains.html" class="load-content">Trains</a></li>
+                        <li><a href="bus.html" class="load-content">Bus</a></li>
+                      </ul>
+                    </nav>
+                
+                    <h1 id="title"></h1>
+                    <div id="content"></div>
+                  </div>
+                
+    <script>
+
+     (function(){
+        var pages = {
+    index: {
+      title: "Home Page",
+      content: "",
+      url:"pages/index.html"
+    },
+    movies: {
+      title: "Movies",
+      content: "",
+      url:"pages/movies.html"
+    },
+    bus: {
+      title: "Bus",
+      content: "",
+      url:"pages/bus.html"
+    },
+    trains: {
+      title: "Trains",
+      content: "",
+      url:"pages/train.html"
+    }
+  }
+
+
+  // Get references to the page elements.
+  var navLinks = document.querySelectorAll('.load-content');
+  var titleElement = document.getElementById('title');
+  var contentElement = document.getElementById('content');
+
+
+  // Update the page content.
+  var updateContent = function(stateObj) {
+    // Check to make sure that this state object is not null.
+    if (stateObj) {
+      // document.title = stateObj.title;
+      // titleElement.innerHTML = stateObj.title;
+       contentElement.innerHTML = stateObj.content;
+    }
+  };
+  var loadPageContent=
+  function(url,callback){
+    var xhr=new XMLHttpRequest();
+    xhr.onload=(response)=>{
+      pages[url.split('.')[0]].content=
+      response.target.response;
+      var pageData=
+      pages[url.split('.')[0]]
+    updateContent(pageData);
+    callback();
+    }
+    xhr.open('get','pages/'+url,true);
+    xhr.send();
+  }
+
+
+  // Attach click listeners for each of the nav links.
+  for (var i = 0; i < navLinks.length; i++) {
+    navLinks[i].addEventListener('click', function(e) {
+      e.preventDefault();
+
+      // Fetch the page data using the URL in the link.
+      var pageURL = this.attributes['href'].value;
+      loadPageContent(pageURL,()=>{
+      var pageData = pages[pageURL.split('.')[0]];
+
+      // Update the title and content.
+      //updateContent(pageData);
+      
+      // Create a new history item.
+      history.pushState(pageData, pageData.title, pageURL);
+    })
+    });
+  }
+  
+ // https://pastebin.com/JwkpiaHp
+
+  // Update the page content when the popstate event is called.
+  window.addEventListener('popstate', function(event) {
+    updateContent(event.state)
+  });
+
+
+  // Load initial content.
+  //updateContent(pages.index);
+
+  // Update this history event so that the state object contains the data
+  // for the homepage.
+  loadPageContent('index.html',()=>{
+  history.replaceState(pages.index, 
+  pages.index.title, '');
+})
+
+     })();   
+    
+    </script>
+    </body>
+</html>

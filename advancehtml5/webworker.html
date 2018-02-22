@@ -42,6 +42,14 @@
                     }
                     worker.postMessage('start');
                 })
+                document.querySelector('#pause').addEventListener('click',(e)=>{
+                    worker.postMessage('pause');
+                })
+                document.querySelector('#stop').addEventListener('click',(e)=>{
+                    worker.terminate();
+                })
+
+                
             })();
             </script>
 </body>

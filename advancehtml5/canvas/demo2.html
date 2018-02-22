@@ -1,0 +1,36 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+        <canvas id="canvas"></canvas>
+        <script>
+            let canvas=document.querySelector('#canvas');
+            let context=canvas.getContext('2d');
+            let video=document.createElement('video');
+            video.src="C:/Users/vmalva/Downloads/videoplayback.mp4"
+            video.controls=true;
+            document.body.appendChild(video);
+            video.onplay=()=>{
+                canvas.width=video.videoWidth;
+                canvas.height=video.videoHeight;
+                draw();
+            }
+            function draw(){
+                if(video.paused||video.ended){
+                    return false
+                }
+                context.drawImage(video,0,0,)
+                context.fillStyle='#000000';
+                setTimeout(draw,20);
+            }
+                
+            
+            </script>
+</body>
+</html>

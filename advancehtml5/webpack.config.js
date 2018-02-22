@@ -1,8 +1,8 @@
 module.exports = {
-    entry: './localstorage.js',
+    entry: './server/initiateClient.js',
    output: {
       publicPath: '/',
-      filename: 'mainlocalstorage.js'
+      filename: './server/main.js'
   },
     module: {
         loaders: [{

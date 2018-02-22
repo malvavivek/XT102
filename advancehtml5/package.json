@@ -4,7 +4,9 @@
   "description": "dkdjkd",
   "main": "src/main.js",
   "dependencies": {
-    "babel-polyfill": "^6.0.16"
+    "babel-polyfill": "^6.0.16",
+    "express": "^4.16.2",
+    "ws": "^4.0.0"
   },
   "devDependencies": {
     "autoprefixer-loader": "^2.0.0",
