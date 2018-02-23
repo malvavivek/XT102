@@ -1,0 +1,24 @@
+<!doctype html>
+<html>
+  <head>
+    <title>onload test</title>
+    // ES5
+    <script>
+      function load() {
+        console.log("load event detected!");
+      }
+      window.onload = load;
+    </script>
+    // ES2015 
+    <script>
+      const load = () => {
+        console.log("load event detected!");
+      } 
+      window.onload = load; 
+    </script>
+  </head>
+  <body>
+      <img src="https://www.pexels.com/photo/abandoned-forest-industry-nature-34950.jpg" alt="" srcset="">
+    <p>The load event fires when the document has finished loading!</p>
+  </body>
+</html>

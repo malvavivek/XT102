@@ -1,0 +1,81 @@
+@import 'colors';
+@import 'mixins';
+@base-size:10px;
+
+html{
+    font-size: @base-size;
+}
+
+body{
+    background-color: @main-color;
+}
+
+h1{
+    font-size: @base-size+10px;
+}
+
+h2{
+    font-size: @base-size+4px;
+}
+
+h3{
+    font-size: @base-size+2px;
+}
+#container{
+   
+    width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+    background: #fff;
+    padding: 5px;
+    .rounded-corners;
+    color:darken(@main-color,10%);
+}
+nav{
+    font-size: @base-size+4px;
+    font-weight: bold;
+    float: right;
+    ul{
+        list-style: none;
+        li{
+            float: left;
+            margin: 2px;
+            a{
+                text-decoration: none;
+                &:hover{
+                    text-decoration: underline;
+                }
+            }
+        }
+    }
+}
+footer{
+    font-size: @base-size -1px;
+    text-align: center;
+    color: blue;
+    nav{
+        display: inline-block;
+        vertical-align: middle;
+    }
+}
+#contact-form{
+    .fonts();
+    @app-root:"http://localhost:5000";
+    background-image: url("@{app-root}/images.jpg");
+    background: #f8f8f8;
+    width: 400px;
+    margin-left: auto;
+    margin-right: auto;
+    border: black 1px solid;
+    .rounded-corners(10);
+    padding: 5px;
+    input[type=textbox],textarea{
+        .fonts();
+        background: #ffffe0;
+        width: 250px;
+        display: block;
+        padding: 2px;
+        .rounded-corners(20px);
+    }
+};
+

@@ -1,0 +1,89 @@
+html {
+  font-size: 10px; }
+
+body {
+  background-color: #000000; }
+
+h1 {
+  font-size: 20px; }
+
+h2 {
+  font-size: 14px; }
+
+h3 {
+  font-size: 12px; }
+
+.col-colNumber {
+  width: 440px; }
+
+.col-colNumber {
+  width: 290px; }
+
+.col-colNumber {
+  width: 215px; }
+
+.col-colNumber {
+  width: 170px; }
+
+#container {
+  width: 800px;
+  margin-left: auto;
+  margin-right: auto;
+  background: #fff;
+  padding: 5px;
+  border-radius: 5px;
+  -moz-border-radius: 5px;
+  -webkit-border-radius: 5px;
+  color: black; }
+
+nav, header h1 {
+  font-size: 14px;
+  font-weight: bold;
+  float: right; }
+  nav ul, header h1 ul {
+    list-style: none; }
+    nav ul li, header h1 ul li {
+      float: left;
+      margin: 2px; }
+      nav ul li a, header h1 ul li a {
+        text-decoration: none; }
+        nav ul li a:hover, header h1 ul li a:hover {
+          text-decoration: underline; }
+
+header h1 {
+  font-size: 14px;
+  font-weight: bold;
+  font-family: 'Share',cursive;
+  font-color: blue; }
+
+footer {
+  font-size: 10px -1px;
+  text-align: center;
+  color: blue; }
+  footer nav, footer header h1, header footer h1 {
+    display: inline-block;
+    vertical-align: middle; }
+
+#contact-form {
+  font-family: 'open sans',Verdana, Geneva, Tahoma, sans-serif;
+  font-size: 24px;
+  background-image: url("${app-root}/images.jpg");
+  background: #f8f8f8;
+  width: 400px;
+  margin-left: auto;
+  margin-right: auto;
+  border: black 1px solid;
+  border-radius: 10;
+  -moz-border-radius: 10;
+  -webkit-border-radius: 10;
+  padding: 5px; }
+  #contact-form input[type=textbox], #contact-form textarea {
+    font-family: 'open sans',Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 24px;
+    background: #ffffe0;
+    width: 250px;
+    display: block;
+    padding: 2px;
+    border-radius: 20px;
+    -moz-border-radius: 20px;
+    -webkit-border-radius: 20px; }

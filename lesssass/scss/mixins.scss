@@ -1,0 +1,9 @@
+@mixin rounded-corners($size:5px){
+    border-radius: $size;
+    -moz-border-radius:$size;
+    -webkit-border-radius:$size;
+}
+@mixin fonts{
+    font-family: 'open sans',Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 24px;
+}

@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <!-- <p>Hello</p>
+    <a href="google.com">google</a>
+    <a href="youtube.com">youtube</a>
+    <span>
+        sdgferd
+    </span>
+    <span>
+            dfh
+    </span> -->
+    <table>
+        <tr>
+            <th>abc</th>
+            <th>sdf</th>
+        </tr>
+        <tr>
+            <td class="class1">flipkart</td>
+            <td>myntra</td>
+        </tr>
+        <tr>
+            <td id="myid">a</td>
+            <td>b</td>
+        </tr>
+        <tr>
+            <td>1</td>
+            <td>2</td>
+        </tr>
+    </table>
+    <div id="div1">hello</div>
+    <div>er</div>
+    <div>dfg</div>
+    <div>fg</div>
+    <form action="">
+            <button disabled="disabled"></button>
+            <select name="" id=""></select>
+            <input type="text">
+            <input type="textarea" name="" id="" value="sdjfbsjdevents">
+            <input type="button" value="fdef">
+            <textarea name="" id="" cols="30" rows="10"></textarea>
+            <input type="radio">
+    </form>
+   
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+   <script> 
+        // $(document).ready(function(){
+        // console.log('Document Content Loaded')
+        // })
+        // jQuery(document).ready(function(){
+        // console.log('Document Content Loaded')
+        // })
+        // console.log($('p,a,span'));
+        // console.log($('table tr'));
+        // console.log($('#myid'));
+        // console.log(document.querySelector('tr'));
+        // console.log($('.class1'));
+        // console.log(typeof $);
+        // console.log($('input'));
+        // console.log($(':input'));
+        // console.log($('tr:odd'))
+        //console.log($('th:first-child'))
+        // console.log($('[value$="events"]')) //search for those elements whose value ends with events
+         $('div').each(function(i){             //this function adds a title to all divs
+            this.title="My Index="+i;
+         });
+
+        var val=$('div').attr('title');    //its will get the title of first div
+        console.log(val);
+        var val1=$('div').attr('title','Button'); //it will set the title attribute of all divs
+         
+        $('div').attr({
+            title:'Index',
+            style:'border: 1px solid black;'
+        })
+       // $('<span>(igf)</span').appendTo('#div1');   span is added as the last child of element with "div1" 
+        
+        $('<span>office</span').prependTo('#div1');   //span is added as the first child of element with "div1" 
+           
+    </script>
+</body>
+</html>
