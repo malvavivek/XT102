@@ -1,4 +1,12 @@
+import Observer from "../observer/listenerorder";
 class DataStorage{
+
+    constructor(){
+      //  this.controller = new Observer();
+        this.orderAdd=new Observer();
+        this.orderUpdate=new Observer();
+        this.orderDelete=new Observer();
+    }
 
     storeMeal(meal){
         let items;
@@ -11,7 +19,10 @@ localStorage.setItem('meals',JSON.stringify(items))
     items=JSON.parse(localStorage.getItem('meals'))
 items.push(meal);
 localStorage.setItem('meals',JSON.stringify(items))
+
+
 }
+this.orderAdd.notify(items);
     }
     updateMeal(meal){
         let meals=JSON.parse(localStorage.getItem('meals'));
@@ -22,6 +33,7 @@ localStorage.setItem('meals',JSON.stringify(items))
         JSON.stringify(meals))
             }
         })
+        this.orderUpdate.notify(meals);
     }
 
     removeMeal(meal){
@@ -38,6 +50,7 @@ localStorage.setItem('meals',JSON.stringify(items))
     localStorage.setItem('meals',
         JSON.stringify(meals))
             })
+            this.orderDelete.notify(meals);
     }
 
     getMeals(){

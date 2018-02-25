@@ -3,7 +3,8 @@ import Model from '../model/mealOrder'
 
  class MealController{
     constructor(){
-        this.items=DataStorage.getMeals();
+        this.DataStorage = DataStorage;
+        this.items=this.DataStorage.getMeals();
         this.currentMeal=null;
         this.totalCalories=0;
 
@@ -53,6 +54,16 @@ this.items.forEach((item)=>{
             }
 
     })
+    
+}
+clearAll(){
+    this.items.forEach((item)=>{
+       
+            DataStorage.removeMeal(item);
+        
+
+})
+
 }
 }
 export default new MealController();

@@ -20,7 +20,9 @@ import View from "./view/view";
         orderTable:
             document.querySelector('table'),
         tableRow:
-            document.getElementById('tableBody')
+            document.getElementById('tableBody'),
+        totalCal:
+        document.getElementById('totalCap')
     });
     view.initialize();
 })();
