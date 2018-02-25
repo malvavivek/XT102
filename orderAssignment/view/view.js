@@ -56,8 +56,10 @@ export default class View{
        });
         this.elements.clearButton.addEventListener('click',(e)=>{
         this.elements.tableRow.innerHTML="";
+       // this.elements.totalCal='';
         this.elements.Meal.value="";
         this.elements.Calories.value="";
+        this.elements.addButton.classList.add('displayBlock');
         this.elements.updateButton.classList.add('displayNone');
         this.elements.deleteButton.classList.add('displayNone');
         this.elements.backButton.classList.add('displayNone');

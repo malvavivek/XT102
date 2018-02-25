@@ -153,8 +153,10 @@
 	            });
 	            this.elements.clearButton.addEventListener('click', function (e) {
 	                _this.elements.tableRow.innerHTML = "";
+	                // this.elements.totalCal='';
 	                _this.elements.Meal.value = "";
 	                _this.elements.Calories.value = "";
+	                _this.elements.addButton.classList.add('displayBlock');
 	                _this.elements.updateButton.classList.add('displayNone');
 	                _this.elements.deleteButton.classList.add('displayNone');
 	                _this.elements.backButton.classList.add('displayNone');
