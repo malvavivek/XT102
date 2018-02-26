@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+
+    <div id="div1">
+        DIV1
+    </div>
+    <div id="div2">
+            DIV2
+    </div>
+    <div  id="div3">
+            DIV3
+    </div>
+    <div  id="div4">
+            DIV4
+    </div>
+    <div  id="div5">
+            DIV5
+    </div>
+    <div  id="div6">
+            DIV6
+    </div>
+    <button id="btn1">Click</button>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+   <script> 
+    $(function(){
+        $.fn.customFunction=function(){
+            let arr=[];
+            $.each(this,(idx,item)=>{
+                if(idx%3==0){
+                    arr.push(item);
+                }
+            })
+            //keeps track of previous jquery collections
+            //so that we can enable function chaining
+            return this.pushStack(arr,'customFunction',"")//this argument can be namespace or some other attribute
+        }
+        $('#btn1').on('click',()=>{
+            $('div').customFunction().css({'color':'red','font-weight':'bold'});
+        })
+        // $('div').customFunction().css({'color':'red','font-weight':'bold'});
+        let array1=[1,2,3,4,4,5];
+        let array2=[6,7,8];
+        console.log($.unique(array1));
+        console.log($.merge(array1,array2));
+    //    let greppedArray= $.grep(array1,(item)=>{
+    //         return item%2==0;
+    //     })
+    //     console.log(greppedArray);
+    // });
+    let mappedArray= $.map(array1,(item)=>{
+            return item%2==0;
+        })
+        console.log(mappedArray);
+    });
+    console.log($('div'))
+      console.log($.makeArray($('div')));
+      //makeArray function isn't going to work with selectors
+      //it will only work with jquery object
+      //console.log($('div').makeArray());//this statement wont work 
+      let employee={
+          id:1,
+          name:"Emp1",
+          submitTimeSheet(){
+              return 'Employee Should Submit The Time Sheet'
+          }
+      }
+      let Manager={
+          
+          verifyTimeSheet(){
+              return 'Manager Should verify The Time Sheet'
+          }
+      }
+      let VP={
+          
+          timeSheet(){
+              return 'VP Should verify The Time Sheet'
+          }
+      }
+      $.extend(true,Manager,employee)   //deep copy,copy all from employee to Manager
+      $.extend(true,VP,Manager)     //copy all from Manager which already has all fn from employee
+      console.log(Manager.submitTimeSheet());
+      console.log(VP.verifyTimeSheet());
+    </script>
+</body>
+</html>

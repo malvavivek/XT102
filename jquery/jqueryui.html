@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/themes/base/jquery-ui.css" />
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/dt/dt-1.10.12/datatables.min.css"/>
+    <style>
+            .ui-tabs-vertical { width: 55em; }
+            .ui-tabs-vertical .ui-tabs-nav { padding: .2em .1em .2em .2em; float: left; width: 12em; }
+            .ui-tabs-vertical .ui-tabs-nav li { clear: left; width: 100%; border-bottom-width: 1px !important; border-right-width: 0 !important; margin: 0 -1px .2em 0; }
+            .ui-tabs-vertical .ui-tabs-nav li a { display:block; }
+            .ui-tabs-vertical .ui-tabs-nav li.ui-tabs-active { padding-bottom: 0; padding-right: .1em; border-right-width: 1px; }
+            .ui-tabs-vertical .ui-tabs-panel { padding: 1em; float: right; width: 40em;}
+            </style>
+</head>
+<body>
+    <div id="tabs">
+        <ul>
+            <li><a href="#tabs-1">Tab-1</a></li>
+            <li><a href="#tabs-2">Tab-2</a></li>
+            <li><a href="#tabs-3">Tab-3</a></li>
+        </ul>
+    <div id="tabs-1">
+        Tab -1
+    </div>
+    <div id="tabs-2">
+        Tab -2
+        </div>
+        <div id="tabs-3">
+                Tab -3
+                </div>
+
+    </div>
+
+    <div id="accordion">
+        <h3>Accordion1</h3>
+        <div>Accordion1 Contents</div>
+
+        <h3>Accordion2</h3>
+        <div>Accordion2 Contents</div>
+
+        <h3>Accordion3</h3>
+        <div>Accordion3 Contents</div>
+
+    </div>
+
+    <div>
+            <table id="tableClient" class="table table-bordered table-striped">
+                <thead>
+                    <tr>
+                        <th class="col-sm-1" data-field="userId">UserId</th>
+                        <th class="col-sm-1" data-field="checkDelete"></th>
+                        <th class="col-sm-3" data-field="id">id</th>
+                        <th class="col-sm-3" data-field="title">Title</th>
+                        <th class="col-sm-2" data-field="body">Body</th>
+                        
+                    </tr>
+                </thead>
+            </table>
+        </div>
+    
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+<script type="text/javascript" src="https://cdn.datatables.net/v/dt/dt-1.10.12/datatables.min.js"></script>
+<script>
+$(function(){
+    $('#tabs').tabs({event:'mouseover'})
+    .addClass("ui-tabs-vertical ui-helper-clearfix");
+    
+    $('#tabs li').removeClass('ui-corner-top')
+    .addClass('ui-corner-left')
+
+$('#accordion').accordion(
+    {active:false,collapsible:true})
+})
+var tableClient = $('#tableClient').DataTable({
+		"autoWidth": false,
+		"columnDefs": [
+			{"targets": [ 0 ],
+		     "visible": false,
+		     "searchable": false}
+		],
+		"ajax": {
+			"url": "http://jsonplaceholder.typicode.com/posts",
+			"type": "GET",
+			"success" :  function(data){
+				$.each(data, function(ind, obj){
+					
+					tableClient.row.add([
+						obj.userId,
+						"<input type='checkbox' value='"+obj.cliNumber+"' id=''>",
+						obj.id,
+						obj.title,
+						obj.body
+					]).draw();
+				});
+			}
+		},
+	});
+	
+	
+    
+	
+	
+		
+	
+</script>
+
+</body>
+</html>

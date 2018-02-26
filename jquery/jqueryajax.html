@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    
+        <form class="form-horizontal">
+                <div class="form-group">
+                  <label for="userId" 
+                  class="control-label col-sm-2">UserId</label>
+                  <div class="col-sm-10">
+                    <input type="text" name="userId" id="userId" class="form-control" placeholder="e.g.User Id" />
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label for="title" 
+                  class="control-label col-sm-2">Title</label>
+                  <div class="col-sm-10">
+                    <input type="text" name="title" id="title" class="form-control"  />
+                  </div>
+                </div>
+                <div class="form-group">
+                        <label for="body" 
+                        class="control-label col-sm-2">Title</label>
+                        <div class="col-sm-10">
+                          <input type="text" name="body" id="body" class="form-control"  />
+                        </div>
+                      </div>
+       </form>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>  
+       <script>
+    //    $(function(){
+    //        $('#userId').blur((e)=>{
+    //            // let deferred=$.Deferred;
+    //             $.getJSON("https://jsonplaceholder.typicode.com/posts/"+
+    //             $(e.currentTarget).val()).done((data)=>{
+    //                 $('#title').val(data.title)
+    //                 $('#body').val(data.body)
+    //             }).fail((xhr)=>{
+    //                 alert(xhr.error)
+    //             }) ;
+    //        })
+    //    })
+    $(function(){
+           
+        $('#userId').blur((e)=>{
+                $.ajax({url:"https://jsonplaceholder.typicode.com/posts/"+
+                $(e.currentTarget).val(),method:'GET'}).done((data)=>{
+                    $('#title').val(data.title)
+                    $('#body').val(data.body)
+                }).fail((xhr)=>{
+                    alert(xhr.error)
+                }) 
+           })
+        })
+       </script>
+</body>
+</html>

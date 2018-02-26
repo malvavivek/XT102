@@ -84,10 +84,6 @@
 
 	var _mealCtrl2 = _interopRequireDefault(_mealCtrl);
 
-	var _mealOrder = __webpack_require__(5);
-
-	var _mealOrder2 = _interopRequireDefault(_mealOrder);
-
 	var _mealstorage = __webpack_require__(3);
 
 	var _mealstorage2 = _interopRequireDefault(_mealstorage);
@@ -101,7 +97,6 @@
 	        _classCallCheck(this, View);
 
 	        this.elements = elements;
-	        //this.model =  new Model();
 	        this.total = 0;
 	        this.controller = _mealCtrl2.default;
 	        this.mealDetails = _mealstorage2.default;
@@ -131,29 +126,26 @@
 	                    _this.controller.addMeal(_this.elements.Meal.value, _this.elements.Calories.value);
 	                    _this.elements.Meal.value = '';
 	                    _this.elements.Calories.value = '';
-	                    //  this.renderOrderList(this.mealDetails.getMeals());
 	                }
 	            });
 	            this.elements.updateButton.addEventListener('click', function () {
 	                debugger;
 	                _this.controller.updateMeal(parseInt(_this.targetId), _this.elements.Meal.value, _this.elements.Calories.value);
-	                // this.elements.Meal.value='';
-	                // this.elements.Calories.value='';
-
+	                _this.elements.Meal.value = '';
+	                _this.elements.Calories.value = '';
 	            });
 	            this.elements.deleteButton.addEventListener('click', function (e) {
 	                _this.controller.removeMeal(parseInt(_this.targetId));
 	                _this.elements.Meal.value = '';
 	                _this.elements.Calories.value = '';
-	                //this.renderOrderList(this.mealDetails.getMeals());
 	                _this.elements.addButton.classList.add('displayBlock');
 	                _this.elements.updateButton.classList.add('displayNone');
 	                _this.elements.deleteButton.classList.add('displayNone');
 	                _this.elements.backButton.classList.add('displayNone');
 	            });
 	            this.elements.clearButton.addEventListener('click', function (e) {
+	                debugger;
 	                _this.elements.tableRow.innerHTML = "";
-	                // this.elements.totalCal='';
 	                _this.elements.Meal.value = "";
 	                _this.elements.Calories.value = "";
 	                _this.elements.addButton.classList.add('displayBlock');
@@ -168,25 +160,22 @@
 	        value: function renderOrderList(newmealDetails) {
 	            var _this2 = this;
 
+	            debugger;
 	            this.total = 0;
 	            this.elements.tableRow.innerHTML = "";
 	            if (newmealDetails.length == 0) {
 	                this.elements.Meal.value = "";
 	                this.elements.Calories.value = "";
-	                this.elements.orderTable.innerHTML = "";
+	                this.elements.tableRow.innerHTML = "";
 	                this.total = 0;
 	                this.elements.totalCal.innerHTML = this.total;
 	            }
 	            newmealDetails.forEach(function (item) {
-	                // let mealOrder=JSON.parse(localStorage.getItem('meals'));  
-	                //  let cap=document.getElementById('totalCap');
 	                var trow = document.createElement('tr');
 	                var data1 = document.createElement('td');
 	                var data2 = document.createElement('td');
-
 	                var data3 = document.createElement('td');
 	                var editButton = document.createElement('button');
-
 	                editButton.innerHTML = 'edit';
 	                editButton.type = 'Button';
 	                editButton.setAttribute('id', item.id);
@@ -199,61 +188,16 @@
 	                _this2.total = _this2.total + parseInt(item.calorie);
 	                _this2.elements.totalCal.innerHTML = _this2.total;
 	                _this2.elements.tableRow.appendChild(trow);
-	                // console.log(this.elements.orderTable.rows.length);
-
-	                //     let trIndex=this.elements.orderTable.rows.length;
-	                //     for( let trIndex  in mealOrder){
-	                //     // data1.innerHTML=mealOrder[trIndex].meal;
-	                //     // data2.innerHTML=mealOrder[trIndex].calorie;
-
-	                //   // cap.innerHTML=newTotal;
-	                //     }
-	                // this.elements.deleteButton.addEventListener('click',(d)=>{  
-	                //     // cap.innerHTML-=this.elements.calorie.value;
-	                //     // this.elements.Meal.value='';
-	                //     // this.elements.Calories.value='';
-	                //     // e.target.parentNode.parentNode.remove();
-	                //     this.controller.removeMeal(this.targetId);
-	                //     this.elements.addButton.classList.add('displayBlock');
-	                //     this.elements.updateButton.classList.add('displayNone');
-	                //     this.elements.deleteButton.classList.add('displayNone');
-	                //     this.elements.backButton.classList.add('displayNone');
-
-
-	                // });
 	                editButton.addEventListener('click', function (e) {
-	                    debugger;
 	                    _this2.targetId = e.currentTarget.id;
-
 	                    _this2.elements.addButton.classList.remove('displayBlock');
-	                    _this2.elements.addButton.className += 'displayNone';
+	                    _this2.elements.addButton.classList.add('displayNone');
 	                    _this2.elements.updateButton.classList.remove('displayNone');
 	                    _this2.elements.deleteButton.classList.remove('displayNone');
 	                    _this2.elements.backButton.classList.remove('displayNone');
 	                    editButton.disabled = "true";
-	                    //  this.elements.Meal.value=e.currentTarget.parentNode.parentNode.childNodes[0].innerHTML;
-	                    //  this.elements.Calories.value=e.currentTarget.parentNode.parentNode.childNodes[1].innerHTML;
 	                    _this2.elements.Meal.value = item.meal;
 	                    _this2.elements.Calories.value = item.calorie;
-
-	                    // this.elements.Meal.value=mealOrder.meal;
-	                    // this.elements.Calories.value=mealOrder.calorie;
-
-	                    //         this.elements.updateButton.addEventListener('click',(f)=>{
-	                    //             debugger;
-	                    //            let cap1=cap.innerHTML-parseInt(e.target.parentNode.parentNode.childNodes[1].innerHTML);
-	                    //          //  let mealOrder=JSON.parse(localStorage.getItem('meals'));
-	                    // //     let trIndex=this.elements.orderTable.rows.length;
-	                    // //     for( let trIndex  in mealOrder){
-	                    // //     mealOrder[trIndex].meal;
-	                    // //     data2.innerHTML=mealOrder[trIndex].calorie;
-	                    // //   // cap.innerHTML=newTotal;
-	                    // //     }
-	                    //              e.target.parentNode.parentNode.childNodes[0].innerHTML=item.meal;
-	                    //              e.target.parentNode.parentNode.childNodes[1].innerHTML=item.calorie;
-	                    //              cap.innerHTML=cap1+parseInt(e.target.parentNode.parentNode.childNodes[1].innerHTML);
-	                    //              this.controller.updateMeal(this.targetId,this.elements.Meal.value,this.elements.Calories.value);
-	                    //         });
 	                });
 	            });
 	            this.elements.backButton.addEventListener('click', function (e) {
@@ -340,8 +284,6 @@
 	                    _mealstorage2.default.updateMeal(item);
 	                }
 	            });
-
-	            //return newMeal;
 	        }
 	    }, {
 	        key: 'removeMeal',
@@ -356,7 +298,7 @@
 	        key: 'clearAll',
 	        value: function clearAll() {
 	            this.items.forEach(function (item) {
-
+	                debugger;
 	                _mealstorage2.default.removeMeal(item);
 	            });
 	        }
@@ -391,7 +333,6 @@
 	    function DataStorage() {
 	        _classCallCheck(this, DataStorage);
 
-	        //  this.controller = new Observer();
 	        this.orderAdd = new _listenerorder2.default();
 	        this.orderUpdate = new _listenerorder2.default();
 	        this.orderDelete = new _listenerorder2.default();
@@ -427,6 +368,7 @@
 	    }, {
 	        key: 'removeMeal',
 	        value: function removeMeal(meal) {
+	            debugger;
 	            var meals = JSON.parse(localStorage.getItem('meals'));
 	            var ids = meals.map(function (item) {
 	                return item.id;

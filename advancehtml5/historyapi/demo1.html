@@ -4,7 +4,6 @@
         <title></title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        
     </head>
     <body>
             <div id="page-wrapper">
@@ -16,11 +15,9 @@
                         <li><a href="bus.html" class="load-content">Bus</a></li>
                       </ul>
                     </nav>
-                
                     <h1 id="title"></h1>
                     <div id="content"></div>
-                  </div>
-                
+                  </div>          
     <script>
 
      (function(){
@@ -47,13 +44,10 @@
     }
   }
 
-
   // Get references to the page elements.
   var navLinks = document.querySelectorAll('.load-content');
   var titleElement = document.getElementById('title');
   var contentElement = document.getElementById('content');
-
-
   // Update the page content.
   var updateContent = function(stateObj) {
     // Check to make sure that this state object is not null.
@@ -77,8 +71,6 @@
     xhr.open('get','pages/'+url,true);
     xhr.send();
   }
-
-
   // Attach click listeners for each of the nav links.
   for (var i = 0; i < navLinks.length; i++) {
     navLinks[i].addEventListener('click', function(e) {

@@ -43,8 +43,6 @@ this.items.forEach((item)=>{
     }
 
 });
-      
-        //return newMeal;
     }
 
     removeMeal(id){
@@ -58,7 +56,7 @@ this.items.forEach((item)=>{
 }
 clearAll(){
     this.items.forEach((item)=>{
-       
+       debugger;
             DataStorage.removeMeal(item);
         
 

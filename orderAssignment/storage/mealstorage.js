@@ -2,7 +2,6 @@ import Observer from "../observer/listenerorder";
 class DataStorage{
 
     constructor(){
-      //  this.controller = new Observer();
         this.orderAdd=new Observer();
         this.orderUpdate=new Observer();
         this.orderDelete=new Observer();
@@ -13,7 +12,7 @@ class DataStorage{
         if(localStorage.getItem('meals')===null){
             items=[];
             items.push(meal);
-localStorage.setItem('meals',JSON.stringify(items))
+        localStorage.setItem('meals',JSON.stringify(items))
         }
         else{
     items=JSON.parse(localStorage.getItem('meals'))
@@ -37,6 +36,7 @@ this.orderAdd.notify(items);
     }
 
     removeMeal(meal){
+        debugger;
     let meals=JSON.parse(localStorage.getItem('meals'));
     const ids=  meals.map((item)=>{
         return item.id;
