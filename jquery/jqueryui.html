@@ -82,7 +82,10 @@ var tableClient = $('#tableClient').DataTable({
 		"columnDefs": [
 			{"targets": [ 0 ],
 		     "visible": false,
-		     "searchable": false}
+             "searchable": true},
+            //  {"targets": _all,
+		    //  "visible": true,
+		    //  "searchable": true}
 		],
 		"ajax": {
 			"url": "http://jsonplaceholder.typicode.com/posts",
