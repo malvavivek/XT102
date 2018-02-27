@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    
+</head>
+<body>
+    
+    <form action="Post" >
+        <input type="text" id="title" >
+        <input type="text"  id="body" >
+        <button id="btn" type="button">Post</button>
+          </form>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>  
+<script>
+    $(function(){
+        $('#btn').click((e)=>{
+            var postdata = {
+                title :$('#title').val(),
+                body:$('#body').val()
+            }
+        $.ajax({
+            url: 'http://localhost:3000/posts',
+            type: "POST",
+            data: postdata,
+            dataType: "json"
+        }).done(function(result) {
+            alert('Post is Successfully done');
+        }).fail((xhr)=>{
+            alert(xhr.error);
+         });
+    });
+    });
+</script>
+</body>
+</html>

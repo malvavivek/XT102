@@ -45,18 +45,22 @@
     //             }) ;
     //        })
     //    })
-    $(function(){
-           
-        $('#userId').blur((e)=>{
-                $.ajax({url:"https://jsonplaceholder.typicode.com/posts/"+
-                $(e.currentTarget).val(),method:'GET'}).done((data)=>{
-                    $('#title').val(data.title)
-                    $('#body').val(data.body)
-                }).fail((xhr)=>{
-                    alert(xhr.error)
-                }) 
-           })
-        })
-       </script>
+    
+   
+$(function(){
+$('#userId').blur((e)=>{
+// let deferred=$.Deferred;
+let ajaxcall1=$.ajax({url:"http://jsonplaceholder.typicode.com/posts/"+
+$(e.currentTarget).val(),method:'GET'}).done((data)=>{
+$('#title').val(data.title)
+$('#body').val(data.body)
+
+}).fail((xhr)=>{
+alert(xhr.error)
+})
+})
+}) 
+
+    </script>
 </body>
 </html>

@@ -1,0 +1,99 @@
+{
+  "posts": [
+    {
+      "id": 1,
+      "title": "json-server",
+      "author": "typicode"
+    },
+    {
+      "title": "vice",
+      "body": "hii",
+      "id": 2
+    },
+    {
+      "title": "trhj",
+      "body": "rtyr",
+      "id": 3
+    },
+    {
+      "title": "4t",
+      "body": "ret",
+      "id": 4
+    },
+    {
+      "title": "gfd",
+      "body": "dfg",
+      "id": 5
+    },
+    {
+      "title": "dsf",
+      "body": "sdf",
+      "id": 6
+    },
+    {
+      "title": "sdg",
+      "body": "dsg",
+      "id": 7
+    },
+    {
+      "title": "ghdf",
+      "body": "gfh",
+      "id": 8
+    },
+    {
+      "title": "juy",
+      "body": "uyi",
+      "id": 9
+    },
+    {
+      "title": "brf",
+      "body": "fgb",
+      "id": 10
+    },
+    {
+      "title": "trg",
+      "body": "fdg",
+      "id": 11
+    },
+    {
+      "title": "ret",
+      "body": "ert",
+      "id": 12
+    },
+    {
+      "title": "vgfer",
+      "body": "wer",
+      "id": 13
+    },
+    {
+      "title": "daqsdaasd",
+      "body": "asda",
+      "id": 14
+    },
+    {
+      "title": "daqsdaasdasdsad",
+      "body": "asdaasdsad",
+      "id": 15
+    },
+    {
+      "title": "fsfsdfs",
+      "body": "asdaasdsad",
+      "id": 16
+    },
+    {
+      "title": "sadas",
+      "body": "asdas",
+      "id": 17
+    },
+    {
+      "title": "sadassadas",
+      "body": "asdassad",
+      "id": 18
+    },
+    {
+      "title": "aaa",
+      "body": "2222",
+      "id": 19
+    }
+  ]
+}

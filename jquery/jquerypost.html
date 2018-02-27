@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    
+        <form class="form-horizontal">
+            <label for="email">Email</label>    
+        <input type="email" name="email" id="email" required="required"  >
+            <button type="submit" id="btn">Submit</button>
+    </form>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>  
+       <script>
+    //    $(function(){
+    //        $('#userId').blur((e)=>{
+    //            // let deferred=$.Deferred;
+    //             $.getJSON("https://jsonplaceholder.typicode.com/posts/"+
+    //             $(e.currentTarget).val()).done((data)=>{
+    //                 $('#title').val(data.title)
+    //                 $('#body').val(data.body)
+    //             }).fail((xhr)=>{
+    //                 alert(xhr.error)
+    //             }) ;
+    //        })
+    //    })
+    
+   
+// $(function(){
+// $('#btn').click((e)=>{
+// // let deferred=$.Deferred;
+
+
+// let ajaxcall1=$.ajax({url:"http://jsonplaceholder.typicode.com/posts/"+
+// $(e.currentTarget).val(),method:'GET'}).done((data)=>{
+// $('#email').val(data.email)
+
+
+// }).fail((xhr)=>{
+// alert(xhr.error)
+// })
+// })
+// }) 
+let email1=document.getElementById('#btn')
+email1.addEventListener("click", function() {
+    var elements = document.getElementsByTagName("INPUT");
+    for (var i = 0; i < elements.length; i++) {
+        elements[i].oninvalid = function(e) {
+            e.target.setCustomValidity("");
+            if (!e.target.validity.valid) {
+                e.target.setCustomValidity("This field cannot be left blank");
+            }
+        };
+        elements[i].oninput = function(e) {
+            e.target.setCustomValidity("");
+        };
+    }
+})
+
+    </script>
+</body>
+</html>
