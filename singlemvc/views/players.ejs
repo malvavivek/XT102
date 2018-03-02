@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- https://pastebin.com/2equV4ns-->
+    <head>
+        <title></title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+      
+    </head>
+    <body>
+    
+        <table id="myTable" class="display" cellspacing="0" width="100%">
+            <thead>
+                <tr>
+                    <th>Player Id</th>
+                    <th>Player name</th>
+                    <th>Player Age</th>
+                    <th>Player Type</th>
+
+                    
+                </tr>
+            </thead>
+            <tbody>
+
+                
+        <% for(var i=0;i<players.length;i++){ %> 
+                <tr>
+                    <td><%= players[i]._id %></td>
+                    <td><%= players[i].name %></td>
+                    <td><%= players[i].age %></td>
+                    <td><%= players[i].playerType %></td>
+                 </tr>
+                    <%}%>
+               
+
+            </tbody>
+     
+            
+        </table>
+    
+    
+    </body>
+</html>

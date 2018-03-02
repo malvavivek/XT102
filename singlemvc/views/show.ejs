@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Player Detail</title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+  </head>
+  <body>
+    <div class="container">
+      <h3><a href="/players">Player List</a></h3>
+      <h1>Player Detail</h1>
+      <table>
+        <tbody>
+          <tr>
+            <td>Name</td>
+            <td>:</td>
+            <td><%= player.name %></td>
+          </tr>
+          <tr>
+            <td>Age</td>
+            <td>:</td>
+            <td><%= player.age %></td>
+          </tr>
+          <tr>
+            <td>Player Type</td>
+            <td>:</td>
+            <td><%= player.playerType %></td>
+          </tr>
+          
+        </tbody>
+      </table>
+      <h3><a href="/players/edit/<%= player._id%>">EDIT</a></h3>
+      <form action="/players/delete/<%= player._id%>" method="post">
+        <button type="submit">DELETE</button>
+      </form>
+    </div>
+  </body>
+</html>

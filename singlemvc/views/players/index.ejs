@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Player List</title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+  </head>
+  <body>
+    <div class="container">
+      <h3><a href="/players/create">Create Player</a></h3>
+      <h1>Player List</h1>
+      <% if(players.length>0) { %>
+      <table class="list-table">
+        <thead>
+          <tr>
+            <th>Player Name</th>
+            <th>Age</th>
+          </tr>
+        </thead>
+        <tbody>
+
+          <% for(var i=0; i<players.length;i++) { %>
+            <tr>
+              <td><a href="/players/show/<%= players[i]._id%>"><%= players[i].name%></a></td>
+              <td><%= players[i].age%></td>
+            </tr>
+          <% } %>
+        </tbody>
+      </table>
+      <% } else { %>
+        <div>No players found.</div>
+      <% } %>
+    </div>
+  </body>
+</html>

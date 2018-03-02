@@ -1,3 +1,3 @@
-module.exports.about=(req,res)=>{
-    res.send('About page')
+module.exports.home=(req,res)=>{
+    res.send('Home Page1')
 }

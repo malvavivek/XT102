@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Edit Player</title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+  </head>
+  <body>
+    <div class="container">
+      <h3><a href="/players">Player List</a></h3>
+      <h1>Edit Player</h1>
+      <form action="/players/update/<%= player._id%>" method="post">
+        <table>
+          <tbody>
+            <tr>
+              <td>Name</td>
+              <td><input type="text" name="name" value="<%= player.name %>" /></td>
+            </tr>
+            
+            <tr>
+              <td>Age</td>
+              <td><input type="text" name="age" value="<%= player.age %>" /></td>
+            </tr>
+            <tr>
+              <td>Player Type</td>
+              <td><input type="text" name="playerType" value="<%= player.playerType %>" /></td>
+            </tr>
+            <tr>
+              <td colspan="2"><button type="submit">Update</button></td>
+            </tr>
+          </tbody>
+        </table>
+      </form>
+    </div>
+  </body>
+</html>
